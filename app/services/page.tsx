@@ -1,332 +1,252 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { ArrowRight, MessageSquare, Globe2 } from "lucide-react";
-import MarketIntelligenceOverview from "@/components/MarketIntelligenceOverview";
-import MarketSegmentsGrid from "@/components/KeySegment";
-import ServiceOfferings from "@/components/ServicesGrid";
-import WhyChooseUs from "@/components/Choose";
-import PremiumCTABlock from "@/components/CTA2";
-import Footer from "@/components/Footer";
+
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useScroll, useTransform } from "framer-motion";
 import OFBSNavbar from "@/components/Navbar";
-import ICT from "@/components/ICT";
+import CompleteSections from "@/components/WhyUsCard";
+import Footer from "@/components/Footer";
+import OurServices from "@/components/ServicesSection";
 
-const ICTHeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isLoaded, setIsLoaded] = useState(false);
+export default function ServicesHero() {
+  const containerRef = useRef(null);
 
-  useEffect(() => {
-    setIsLoaded(true);
+  // Smooth parallax scroll
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["0 0", "1 1"],
+  });
 
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
+  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  // Animations
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 18 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
 
   return (
-    <div className="relative min-h-screen bg-white overflow-hidden flex flex-col items-center justify-center">
-      {/* GRID BACKGROUND */}
-    <OFBSNavbar />
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div
-          className="absolute inset-0"
+    <div
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-[#F1F5F9] via-white to-[#F1F5F9]"
+    >
+      {/* Navbar */}
+      <OFBSNavbar />
+
+      {/* -------------------------------
+          HERO BACKGROUND ORBS
+      -------------------------------- */}
+      <motion.div
+        style={{ y, opacity }}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+      >
+        {/* ORB 1 - BLUE TOP LEFT */}
+        <motion.div
+          animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-48 -left-48 w-96 h-96 rounded-full"
           style={{
-            backgroundImage: `
-              linear-gradient(to right, #1e3a8a 1px, transparent 1px),
-              linear-gradient(to bottom, #1e3a8a 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
+            background:
+              "radial-gradient(circle, rgba(37,99,235,0.12) 0%, rgba(37,99,235,0.05) 50%, transparent 100%)",
+            filter: "blur(60px)",
           }}
-        ></div>
-      </div>
+        />
 
-      {/* GRADIENT ORBS */}
-      <div
-        className="absolute top-20 left-[10%] w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-3xl animate-float-slow"
-        style={{
-          transform: `translate(${mousePosition.x * 0.5}px, ${
-            mousePosition.y * 0.5
-          }px)`,
-        }}
-      ></div>
+        {/* ORB 2 - CYAN TOP RIGHT */}
+        <motion.div
+          animate={{ x: [0, -80, 0], y: [0, 100, 0], scale: [1, 1.2, 1] }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+          className="absolute top-20 -right-32 w-80 h-80 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.03) 50%, transparent 100%)",
+            filter: "blur(50px)",
+          }}
+        />
 
-      <div
-        className="absolute bottom-20 right-[15%] w-[550px] h-[550px] bg-blue-600/10 rounded-full blur-3xl animate-float-slower"
-        style={{
-          transform: `translate(${-mousePosition.x * 0.3}px, ${
-            -mousePosition.y * 0.3
-          }px)`,
-        }}
-      ></div>
+        {/* ORB 3 - NAVY BOTTOM CENTER */}
+        <motion.div
+          animate={{ x: [0, -60, 0], y: [0, -80, 0], scale: [1, 1.15, 1] }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4,
+          }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(30,58,138,0.06) 0%, rgba(30,58,138,0.02) 50%, transparent 100%)",
+            filter: "blur(70px)",
+          }}
+        />
 
-      <div
-        className="absolute top-1/2 left-1/2 w-[350px] h-[350px] bg-blue-700/10 rounded-full blur-3xl animate-pulse-slow"
-        style={{
-          transform: `translate(calc(-50% + ${mousePosition.x * 0.2}px), calc(-50% + ${
-            mousePosition.y * 0.2
-          }px))`,
-        }}
-      ></div>
+        {/* ORB 4 – BLUE LEFT SIDE */}
+        <motion.div
+          animate={{ x: [0, 120, 0], y: [0, 60, 0], scale: [1, 1.3, 1] }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+          className="absolute top-1/2 -left-24 w-64 h-64 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0.08) 50%, transparent 100%)",
+            filter: "blur(55px)",
+          }}
+        />
 
-      {/* FLOATING PARTICLES */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <div
+        {/* ORB 5 – CYAN RIGHT */}
+        <motion.div
+          animate={{ x: [0, -40, 0], y: [0, 40, 0], scale: [1, 1.2, 1] }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+          className="absolute top-1/3 right-32 w-48 h-48 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(6,182,212,0.06) 0%, rgba(6,182,212,0.02) 50%, transparent 100%)",
+            filter: "blur(45px)",
+          }}
+        />
+
+        {/* FLOATING PARTICLES */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-500/30 rounded-full animate-particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${6 + Math.random() * 4}s`,
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.sin(i) * 50, 0],
+              opacity: [0.3, 0.6, 0.3],
             }}
-          ></div>
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+            className="absolute w-1 h-1 rounded-full bg-[#2563EB]"
+            style={{
+              left: `${10 + i * 8}%`,
+              top: `${20 + (i % 4) * 20}%`,
+              opacity: 0.4,
+            }}
+          />
         ))}
-      </div>
+      </motion.div>
 
-      {/* DECORATIVE RINGS */}
-      <div
-        className="absolute top-[15%] right-[20%] w-28 h-28 border border-blue-200/30 rounded-full animate-spin-very-slow"
-        style={{
-          transform: `translate(${mousePosition.x * 0.4}px, ${
-            mousePosition.y * 0.4
-          }px)`,
-        }}
-      ></div>
-
-      <div
-        className="absolute bottom-[25%] left-[15%] w-20 h-20 border border-blue-300/20 rounded-full animate-spin-reverse-slow"
-        style={{
-          transform: `translate(${-mousePosition.x * 0.3}px, ${
-            -mousePosition.y * 0.3
-          }px)`,
-        }}
-      ></div>
-
-      {/* MAIN CONTENT */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* BADGE */}
-        <div
-          className={`inline-flex items-center gap-2 px-5 py-2.5 mb-8 bg-gradient-to-r from-blue-50 to-blue-100/60 backdrop-blur-sm rounded-full border border-blue-200/50 shadow-lg shadow-blue-500/5 transition-all duration-1000 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
-          <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
-            Next-Generation Market Intelligence
-          </span>
-        </div>
-
-        {/* TITLE */}
-        <h1
-          className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] transition-all duration-1000 delay-100 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 bg-clip-text text-transparent">
-            ICT Solutions
-          </span>
-          <br />
-          <span className="text-slate-900">That Transform</span>
-          <br />
-          <span className="bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent">
-            Industries
-          </span>
-        </h1>
-
-        {/* SUBTEXT */}
-        <p
-          className={`text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-200 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          Data-driven insights and strategic intelligence for the satellite
-          communications industry.
-        </p>
-
-        {/* CTA BUTTONS */}
-        <div
-          className={`flex flex-col sm:flex-row gap-5 justify-center items-center mb-20 transition-all duration-1000 delay-300 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {/* Primary CTA */}
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-900 text-white rounded-xl font-semibold shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105 flex items-center gap-3 overflow-hidden">
-            <span className="relative z-10">Get a Quote</span>
-            <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
-
-          {/* Secondary CTA */}
-          <button className="group px-8 py-4 bg-white text-blue-700 rounded-xl font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-all duration-300 hover:scale-105 flex items-center gap-3 shadow-lg shadow-blue-500/10">
-            <MessageSquare className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-            <span>Talk to Expert</span>
-          </button>
-        </div>
-
-        {/* FLOATING GLOBE */}
-        <div
-          className={`relative inline-block transition-all duration-1000 delay-500 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl scale-150 animate-pulse-slow"></div>
-
-          <div className="absolute inset-0 border-2 border-blue-400/30 rounded-full animate-ping-slow"></div>
-
-          <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-full border border-blue-200/50 shadow-2xl shadow-blue-500/20 animate-float">
-            <Globe2 className="w-12 h-12 text-blue-600 animate-spin-very-slow" />
+      {/* ============================
+          HERO CONTENT
+      ============================ */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center pt-32 pb-24"
+      >
+        {/* Badge */}
+        <motion.div variants={itemVariants} className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#E2E8F0] shadow-sm">
+            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#2563EB] to-[#06B6D4] animate-pulse" />
+            <span className="text-sm font-medium text-[#334155]">
+              Next-Generation Platform
+            </span>
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* BOTTOM FADE */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        {/* Main Title */}
+        <motion.h1
+          variants={itemVariants}
+          className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#0F172A] mb-6 leading-tight tracking-tight"
+        >
+          Our{" "}
+          <span className="bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] bg-clip-text text-transparent">
+            Services
+          </span>
+        </motion.h1>
 
-      {/* CUSTOM ANIMATIONS */}
-      <style jsx>{`
-        @keyframes float-slow {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(30px, -30px);
-          }
-        }
+        {/* Description */}
+        <motion.p
+          variants={itemVariants}
+          className="text-lg sm:text-xl lg:text-2xl text-[#475569] mb-12 max-w-3xl mx-auto leading-relaxed"
+        >
+          Empower your business with cutting-edge solutions designed for the
+          modern enterprise. Scale faster, innovate smarter, and deliver
+          exceptional results.
+        </motion.p>
 
-        @keyframes float-slower {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(-40px, 40px);
-          }
-        }
+        {/* CTA Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+        >
+          {/* Button 1 */}
+          <motion.button
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative px-8 py-4 bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] text-white font-semibold rounded-xl shadow-lg shadow-[#2563EB]/25 hover:shadow-xl hover:shadow-[#2563EB]/35 transition-all duration-300 overflow-hidden w-full sm:w-auto"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Get Started
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#1E3A8A] to-[#2563EB]"
+              initial={{ x: "100%" }}
+              whileHover={{ x: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.button>
 
-        @keyframes pulse-slow {
-          0%,
-          100% {
-            opacity: 0.6;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.8;
-            transform: scale(1.05);
-          }
-        }
+          {/* Button 2 */}
+          <motion.button
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="group px-8 py-4 bg-white text-[#2563EB] font-semibold rounded-xl border-2 border-[#E2E8F0] hover:border-[#2563EB] shadow-sm hover:shadow-md transition-all duration-300 w-full sm:w-auto"
+          >
+            <span className="flex items-center justify-center gap-2">
+              Watch Demo
+            </span>
+          </motion.button>
+        </motion.div>
+      </motion.div>
 
-        @keyframes particle {
-          0% {
-            opacity: 0;
-            transform: translate(0, 0) scale(1);
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-            transform: translate(60px, -120px) scale(0);
-          }
-        }
-
-        @keyframes spin-very-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes spin-reverse-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(-360deg);
-          }
-        }
-
-        @keyframes ping-slow {
-          0% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          75%,
-          100% {
-            opacity: 0;
-            transform: scale(1.4);
-          }
-        }
-
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-15px);
-          }
-        }
-
-        .animate-float-slow {
-          animation: float-slow 8s ease-in-out infinite;
-        }
-
-        .animate-float-slower {
-          animation: float-slower 10s ease-in-out infinite;
-        }
-
-        .animate-pulse-slow {
-          animation: pulse-slow 4s ease-in-out infinite;
-        }
-
-        .animate-particle {
-          animation: particle linear infinite;
-        }
-
-        .animate-spin-very-slow {
-          animation: spin-very-slow 25s linear infinite;
-        }
-
-        .animate-spin-reverse-slow {
-          animation: spin-reverse-slow 20s linear infinite;
-        }
-
-        .animate-ping-slow {
-          animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
-
-      {/* OVERVIEW SECTION */}
-      <section className="relative z-20 w-full">
-        <MarketIntelligenceOverview />
+      {/* ---------------------------- */}
+      {/* SERVICES SECTION */}
+      {/* ---------------------------- */}
+      <section className="relative z-20">
+        <OurServices />
       </section>
-      <section className="relative z-20 w-full">
-        <ICT />
+      <section className="relative z-20">
+        <CompleteSections />
       </section>
-      <section className="relative z-20 w-full">
-        <WhyChooseUs />
-      </section>
-      <section className="relative z-20 w-full">
-        <PremiumCTABlock />
-      </section>
-      <Footer />
+      <Footer/>
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </div>
+    
   );
-};
-
-export default ICTHeroSection;
+}
