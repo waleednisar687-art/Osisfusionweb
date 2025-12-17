@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/webmail',
+        destination: 'https://webmail.oasisfusionservices.com',
+        permanent: true,
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
