@@ -67,9 +67,9 @@ import Footer from '@/components/Footer';
     {
       icon: Mail,
       title: "Email",
-      primary: "info@ofbs-sa.com",
+      primary: "contactus@oasisfusionservices.com",
       secondary: "24/7 Response",
-      link: "mailto:info@ofbs-sa.com"
+      link: "mailto:contactus@oasisfusionservices.com"
     },
     {
       icon: MapPin,
@@ -93,21 +93,21 @@ import Footer from '@/components/Footer';
       address: "Office 302, Oasis Fusion Business Services",
       state: " Riyadh, KSA",
       phone: "+966 123 456 789",
-      email: "info@ofbs-sa.com"
+      email: "contactus@oasisfusionservices.com<"
     },
     {
       city: "Sarjha, Abu Dubai",
       address: "Sharjah Media City (Shams Free Zone) Al Messaned - Al Mtsannid Suburb",
       state: "Sarjha, Abu Dubai",
       phone: "+971 502729769",
-      email: "info@ofbs-sa.com"
+      email: "contactus@oasisfusionservices.com<"
     },
     {
       city: "Islamabad, Pakistan",
       address: "Khayab-e-Sirsyed Rawalpindi",
       state: "Islamabad, Pakistan",
       phone: "+92 34 35075699",
-      email: "info@ofbs-sa.com"
+      email: "contactus@oasisfusionservices.com<"
     }
   ];
 
