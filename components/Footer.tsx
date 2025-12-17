@@ -160,7 +160,7 @@ const Footer = () => {
 
               <div className="flex items-center space-x-3">
                 <Mail className="text-blue-600 w-5 h-5" />
-                <p>info@ofbs-sa.com</p>
+                <p>contactus@oasisfusionservices.com</p>
               </div>
             </div>
           </motion.div>

@@ -82,7 +82,7 @@ const OFBSNavbar = () => {
   {
     name: "Radio Communication Solutions",
     desc: "Secure radio communication systems for uninterrupted field connectivity",
-    href: "/services/radio"
+    href: "/services/radio-communication-solutions"
   }
 ];
 

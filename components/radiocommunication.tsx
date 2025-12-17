@@ -86,21 +86,20 @@ const RadioCommunication = () => {
             isVisible["segments-header"] ? "animate-fade-up" : "opacity-0"
           }`}
         >
-          <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600/10 to-blue-900/10 rounded-full border border-blue-100 mb-6">
+       <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600/10 to-blue-900/10 rounded-full border border-blue-100 mb-6">
   <span className="text-blue-600 font-semibold text-sm">
-    Satellite Capabilities
+    Radio Communication Capabilities
   </span>
 </div>
 
 <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-  Satellite Service Solutions
+  Radio Communication Solutions
 </h2>
 
 <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-  Enterprise-grade satellite service solutions delivering secure connectivity,
-  global coverage, and reliable performance for mission-critical operations.
+  Professional radio communication solutions delivering secure, real-time voice and data transmission,
+  extended coverage, and high reliability for critical and field-based operations.
 </p>
-
         </div>
 
         {/* Services Grid */}
