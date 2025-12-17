@@ -150,7 +150,7 @@ export default function AboutSection() {
           </motion.h2>
 
           <motion.p variants={fadeUp} className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-slate-600">
-            Oasis Fusion Business Services (OFBS) delivers powerful automation and digital transformation systems built for the modern enterprise.
+           Oasis Fusion Business Services is a premier provider of ICT, Satellite Communications, and Systems Integration solutions in Saudi Arabia. We revolutionize Enterprise, Defense, and  Government clientele with unique telecommunication and Information Technology services and solutions.
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-6 mx-auto w-24 h-1 rounded-full" style={{ background: "linear-gradient(90deg, #2563EB, #06B6D4)" }} />

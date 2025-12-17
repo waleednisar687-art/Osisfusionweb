@@ -59,9 +59,7 @@ useEffect(() => {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen py-24 overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-white">
-      {/* Background Ambient Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Gradient Orbs */}
         <motion.div
           animate={{
             y: [0, -30, 0],
@@ -112,8 +110,6 @@ useEffect(() => {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-40 right-0 w-1 h-80 bg-gradient-to-b from-transparent via-indigo-300/50 to-transparent -rotate-45"
         />
-
-        {/* Floating Particles */}
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}

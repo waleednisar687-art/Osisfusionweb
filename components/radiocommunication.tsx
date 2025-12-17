@@ -1,15 +1,15 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import {
- Cpu,
-  Zap,
-  PhoneCall,
-  Settings,
-  Radio,
-  Sun,
+  Headphones,
+  RadioTower,
+  Repeat,
+  MapPin,
+  Truck,
+  Wifi
 } from "lucide-react";
 
-const LKeyMarketSegments = () => {
+const RadioCommunication = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -35,42 +35,42 @@ const LKeyMarketSegments = () => {
     return () => observerRef.current?.disconnect();
   }, []);
 
- const segments = [
+  const segments = [
   {
-    icon: Zap,
-    title: "Low Current",
+    icon: Headphones,
+    title: "Radio & PTT Systems",
     description:
-      "Design and deployment of low-current systems including structured cabling, access control, fire alarms, CCTV, and building automation."
+      "Professional radio and Push-To-Talk (PTT) communication systems enabling instant, clear, and reliable voice communication for field teams and mission-critical operations."
   },
   {
-    icon: Cpu,
-    title: "Power System",
+    icon: RadioTower,
+    title: "L-Band & Airtime Services",
     description:
-      "Reliable power solutions covering UPS, generators, power distribution, grounding, and electrical control systems."
+      "Reliable L-Band radio communication and airtime services ensuring continuous connectivity, high availability, and dependable performance in remote and challenging environments."
   },
   {
-    icon: PhoneCall,
-    title: "Smart Market Solutions",
+    icon: Repeat,
+    title: "Docking Stations & Repeaters",
     description:
-      "Integrated electronic solutions for smart facilities, retail automation, digital displays, and intelligent control systems."
+      "Radio docking stations and signal repeaters designed to extend coverage, enhance signal strength, and ensure uninterrupted communication across large operational areas."
   },
   {
-    icon: Settings,
-    title: "Operations & Maintenance",
+    icon: MapPin,
+    title: "Tracking Solutions",
     description:
-      "Preventive and corrective maintenance services ensuring system uptime, performance optimization, and operational continuity."
+      "Integrated radio-based tracking solutions providing real-time location visibility, asset monitoring, and enhanced situational awareness."
   },
   {
-    icon: Radio,
-    title: "NB-IoT",
+    icon: Truck,
+    title: "Fleet Management",
     description:
-      "Low-power wide-area IoT connectivity solutions enabling real-time monitoring, asset tracking, and smart device communication."
+      "Radio-enabled fleet management solutions delivering real-time communication, tracking, and coordination to improve operational efficiency and safety."
   },
   {
-    icon: Sun,
-    title: "Solar Surveillance",
+    icon: Wifi,
+    title: "IoT Monitoring",
     description:
-      "Solar-powered surveillance systems designed for remote sites, offering energy efficiency, security, and continuous monitoring."
+      "Radio-based IoT monitoring solutions enabling remote data collection, system status monitoring, and intelligent control for connected devices and infrastructure."
   }
 ];
 
@@ -86,14 +86,24 @@ const LKeyMarketSegments = () => {
             isVisible["segments-header"] ? "animate-fade-up" : "opacity-0"
           }`}
         >
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Our Services for Electronic Solutions
-          </h2>
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600/10 to-blue-900/10 rounded-full border border-blue-100 mb-6">
+  <span className="text-blue-600 font-semibold text-sm">
+    Satellite Capabilities
+  </span>
+</div>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Specialized electronic and electrical solutions designed to deliver reliability, safety, and performance across modern infrastructure systems.
-          </p>
+<h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+  Satellite Service Solutions
+</h2>
+
+<p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+  Enterprise-grade satellite service solutions delivering secure connectivity,
+  global coverage, and reliable performance for mission-critical operations.
+</p>
+
         </div>
+
+        {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {segments.map((segment, idx) => (
             <div
@@ -107,9 +117,15 @@ const LKeyMarketSegments = () => {
               }`}
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
+              {/* Glow */}
               <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/20 to-blue-900/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+              {/* Card */}
               <div className="relative bg-white rounded-2xl p-8 border border-blue-100 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-1 h-full">
+                {/* Top Border */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 rounded-t-2xl" />
+
+                {/* Icon */}
                 <div className="relative mb-6 inline-block">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-900 rounded-xl blur-md opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
                   <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -154,4 +170,4 @@ const LKeyMarketSegments = () => {
   );
 };
 
-export default LKeyMarketSegments;
+export default RadioCommunication;

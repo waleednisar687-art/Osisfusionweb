@@ -38,36 +38,34 @@ const GISKeyMarketSegments = () => {
       icon: Database,
       title: "Data Collection and Management",
       description:
-        "Comprehensive collection, storage, and management of spatial and attribute data from satellite imagery, GPS devices, sensors, and field surveys, ensuring accuracy and data integrity."
+        " From diverse sources, we gather and manage spatial data with unparalleled accuracy and reliability, laying the foundation for robust analytics."
     },
     {
       icon: Map,
       title: "Mapping and Visualization",
       description:
-        "High-quality cartographic mapping and interactive visualizations that transform complex geospatial data into clear, insightful, and decision-ready maps."
+        "Transform complex datasets into visually compelling maps that bring clarity to intricate information, enabling smarter decision-making."
     },
     {
       icon: Layers,
       title: "Spatial Analysis",
       description:
-        "Advanced spatial analysis including overlay analysis, proximity modeling, terrain evaluation, and geostatistical analysis to support informed planning and decision-making."
+        "Harness the power of in-depth spatial analysis to unlock insights that shape strategic planning and optimize operational workflows."
     },
     {
       icon: Settings,
       title: "Custom GIS Solutions",
       description:
-        "Tailored GIS applications and workflows designed to meet specific organizational needs, integrating geospatial data with enterprise systems for maximum operational efficiency."
+        "Tailored GIS applications designed to address your organization’s unique challenges, enhancing capabilities and driving results"
     }
   ];
 
   return (
     <section className="relative py-32 px-6 bg-gradient-to-br from-white via-blue-50/30 to-white overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50/30 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div
           id="segments-header"
           data-animate

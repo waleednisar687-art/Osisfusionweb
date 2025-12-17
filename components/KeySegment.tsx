@@ -40,54 +40,45 @@ const KeyMarketSegments = () => {
       icon: Headphones,
       title: "Managed Services",
       description:
-        "OFBS excels in managed services across iDirect, Newtec, and Comtech/UHP platforms, guaranteeing dependable communication solutions."
+        " OFBS excels in managed services across iDirect, Newtec, and Comtech/UHP platforms, guaranteeing dependable communication solutions. Utilizing state-of-the-art DVB-S2 & DVB-S2X technologies, we deliver high-speed, scalable VSAT connections with superior quality."
     },
     {
       icon: RadioTower,
       title: "Point-to-Point (SCPC)",
       description:
-        "OFBS provides scalable Point-to-Point (P2P) dedicated links using advanced industrial and HTS equipment."
+        "OFBS provides scalable Point-to-Point (P2P) dedicated links using advanced industrial and HTS equipment. Our solutions are crafted to optimize satellite communication infrastructure, delivering high-performance capabilities that effectively lower operational expenses and capital expenditures."
     },
     {
       icon: Share2,
       title: "Point-to-Multipoint",
       description:
-        "OFBS utilizes modern TDMA, FDMA, and CDMA technologies in our advanced Point-to-Multipoint solutions."
+        " OFBS utilizes modern TDMA, FDMA, and CDMA technologies in our advanced Point-to-Multipoint solutions. Our robust satellite communications infrastructure ensures dependable and scalable connectivity to numerous remote sites from a centralized hub."
     },
     {
       icon: GlobeLock,
       title: "Dedicated Network Services & VNOs",
       description:
-        "OFBS provides scalable Virtual Network Operator (VNO) solutions, enabling ISPs and IT service providers to establish and manage their own VSAT networks using our hubs and teleport infrastructure."
+        " OFBS also provides scalable Virtual Network Operator (VNO) solutions, enabling ISPs and IT service providers to establish and manage their own VSAT networks using our hubs and teleport infrastructure."
     },
     {
       icon: ShieldCheck,
       title: "Out-of-Band Communication",
       description:
-        "Secure out-of-band communication ensuring network resilience, remote access, and uninterrupted monitoring during primary link failures."
+        "The Maritime VSAT system is reinforced by an Out-of-Band management system, ensuring robust redundancy in the event of VSAT system failure. Count on us to safeguard your communications, ensuring uninterrupted operation, even in challenging maritime conditions."
     },
     {
       icon: Landmark,
       title: "VSAT Banking Connectivity Solutions",
       description:
-        "Custom-built VSAT solutions designed specifically for banking institutions, ensuring secure, reliable, and compliant financial connectivity."
+        "OasisFusionServices specializes in creating custom solutions designed specifically for the banking sector. Leveraging both VSAT and GSM technologies ensures seamless connectivity that is further bolstered by terrestrial backup options."
     },
-     {
-      icon: Landmark,
-      title: " Banking Connectivity Solutions",
-      description:
-        "Custom-built VSAT solutions designed specifically for banking institutions, ensuring secure, reliable, and compliant financial connectivity."
-    }
   ];
 
   return (
     <section className="relative py-32 px-6 bg-gradient-to-br from-white via-blue-50/30 to-white overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50/30 rounded-full blur-3xl" />
-
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div
           id="segments-header"
           data-animate
@@ -96,19 +87,20 @@ const KeyMarketSegments = () => {
           }`}
         >
           <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-600/10 to-blue-900/10 rounded-full border border-blue-100 mb-6">
-            <span className="text-blue-600 font-semibold text-sm">
-              Market Solutions
-            </span>
-          </div>
+  <span className="text-blue-600 font-semibold text-sm">
+    Satellite Capabilities
+  </span>
+</div>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Key Market Segments
-          </h2>
+<h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+  Satellite Service Solutions
+</h2>
 
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Specialized enterprise satellite communication solutions designed
-            to deliver reliability, security, and performance at scale.
-          </p>
+<p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+  Enterprise-grade satellite service solutions delivering secure connectivity,
+  global coverage, and reliable performance for mission-critical operations.
+</p>
+
         </div>
 
         {/* Services Grid */}

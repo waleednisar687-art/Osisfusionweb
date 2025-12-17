@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { ArrowRight, MessageSquare, Globe2 } from "lucide-react";
 import MarketIntelligenceOverview from "@/components/MarketIntelligenceOverview";
 import MarketSegmentsGrid from "@/components/KeySegment";
-import ServiceOfferings from "@/components/ServicesGrid";
 import WhyChooseUs from "@/components/Choose";
 import PremiumCTABlock from "@/components/CTA2";
 import Footer from "@/components/Footer";
 import OFBSNavbar from "@/components/Navbar";
+import Link from "next/link";
 
 const ICTHeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -122,21 +122,21 @@ const ICTHeroSection = () => {
         </div>
 
         {/* TITLE */}
-        <h1
-          className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] transition-all duration-1000 delay-100 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 bg-clip-text text-transparent">
-           Satellite Services Solutions
-          </span>
-          <br />
-          <span className="text-slate-900">That Transform</span>
-          <br />
-          <span className="bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent">
-            Industries
-          </span>
-        </h1>
+       <h1
+  className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] transition-all duration-1000 delay-100 ${
+    isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+  }`}
+>
+  <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 bg-clip-text text-transparent">
+    Advanced Satellite Services
+  </span>
+  <br />
+  <span className="text-slate-900">Powering Reliable</span>
+  <br />
+  <span className="bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent">
+    Global Connectivity
+  </span>
+</h1>
 
         {/* SUBTEXT */}
         <p
@@ -144,8 +144,7 @@ const ICTHeroSection = () => {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Data-driven insights and strategic intelligence for the satellite
-          communications industry.
+       Data-driven insights and strategic intelligence powering modern satellite communication operations.
         </p>
 
         {/* CTA BUTTONS */}
@@ -156,18 +155,16 @@ const ICTHeroSection = () => {
         >
           {/* Primary CTA */}
           <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-900 text-white rounded-xl font-semibold shadow-xl shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105 flex items-center gap-3 overflow-hidden">
-            <span className="relative z-10">Get a Quote</span>
+            <Link href="/contact" className="relative z-10">Get a Quote</Link>
             <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
 
           {/* Secondary CTA */}
           <button className="group px-8 py-4 bg-white text-blue-700 rounded-xl font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-all duration-300 hover:scale-105 flex items-center gap-3 shadow-lg shadow-blue-500/10">
             <MessageSquare className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-            <span>Talk to Expert</span>
+            <Link href="/contact">Talk to Expert</Link>
           </button>
         </div>
-
-        {/* FLOATING GLOBE */}
         <div
           className={`relative inline-block transition-all duration-1000 delay-500 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -176,17 +173,9 @@ const ICTHeroSection = () => {
           <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl scale-150 animate-pulse-slow"></div>
 
           <div className="absolute inset-0 border-2 border-blue-400/30 rounded-full animate-ping-slow"></div>
-
-          <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-full border border-blue-200/50 shadow-2xl shadow-blue-500/20 animate-float">
-            <Globe2 className="w-12 h-12 text-blue-600 animate-spin-very-slow" />
-          </div>
         </div>
       </div>
-
-      {/* BOTTOM FADE */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-
-      {/* CUSTOM ANIMATIONS */}
       <style jsx>{`
         @keyframes float-slow {
           0%,
@@ -309,8 +298,6 @@ const ICTHeroSection = () => {
           animation: float 3s ease-in-out infinite;
         }
       `}</style>
-
-      {/* OVERVIEW SECTION */}
       <section className="relative z-20 w-full">
         <MarketIntelligenceOverview />
       </section>

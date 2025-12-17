@@ -9,10 +9,9 @@ const PartnersCarousel = () => {
 
   const partners = [
     { id: 1, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/1.png', name: 'Partner 1' },
-    { id: 2, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/2.png', name: 'Partner 2' },
     { id: 3, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/3.png', name: 'Partner 3' },
     { id: 4, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/4.png', name: 'Partner 4' },
-    { id: 5, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/5-1.png', name: 'Partner 5' },
+    { id: 5, url: 'https://media.licdn.com/dms/image/v2/C4D0BAQERsEZBewxTHw/company-logo_200_200/company-logo_200_200/0/1630522717028/sathubs_logo?e=1767225600&v=beta&t=b5K-FiEeuhkhAjNxRhXRuGm5zvRI8CWglzoxufB_qb0', name: 'Partner 5' },
     { id: 6, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/6-1.png', name: 'Partner 6' },
     { id: 7, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/7-1.png', name: 'Partner 7' },
     { id: 8, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/8.png', name: 'Partner 8' },
@@ -20,7 +19,7 @@ const PartnersCarousel = () => {
     { id: 10, url: 'https://ofbs-oft.com/wp-content/uploads/2024/08/10.png', name: 'Partner 10' },
     { id: 11, url: 'https://ofbs-oft.com/wp-content/uploads/2025/01/images-300x158.jpeg', name: 'Partner 11' },
     { id: 12, url: 'https://ofbs-oft.com/wp-content/uploads/2025/01/inetvu_logo_small-300x89.jpg', name: 'Partner 12' },
-    { id: 13, url: 'https://ofbs-oft.com/wp-content/uploads/2025/01/Z74.SI_BIG.D-1-300x164.png', name: 'Partner 13' },
+    { id: 13, url: 'https://cdn1.singteldigital.com/content/dam/singtel/online-draft/singtel_logo_coloured.png', name: 'Partner 13' },
     { id: 14, url: 'https://ofbs-oft.com/wp-content/uploads/2025/01/5e8c7885dd1816363b2f85be_hero_fat_white_250-300x300.png', name: 'Partner 14' },
     { id: 15, url: 'https://ofbs-oft.com/wp-content/uploads/2025/01/edfec16ea94f4db7d143a2f7a536504f-300x212.png', name: 'Partner 15' },
     { id: 16, url: 'https://ofbs-oft.com/wp-content/uploads/2025/01/pngegg-1-300x176.png', name: 'Partner 16' }

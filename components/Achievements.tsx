@@ -11,7 +11,7 @@ const AchievementsSection = () => {
     { number: "150+", label: "Countries Covered", icon: Globe },
     { number: "99.9%", label: "Uptime SLA", icon: TrendingUp },
     { number: "24/7", label: "Support Available", icon: Shield },
-    { number: "15+", label: "Years Experience", icon: Award },
+    { number: "25+", label: "Years Experience", icon: Award },
     { number: "50K+", label: "Active Connections", icon: Zap }
   ];
 

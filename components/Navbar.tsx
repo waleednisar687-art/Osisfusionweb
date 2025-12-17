@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
@@ -9,6 +9,10 @@ const OFBSNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  
+  // Ref for the entire dropdown container (trigger + menu)
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,19 +22,70 @@ const OFBSNavbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu and reset mobile dropdown
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     setIsMobileDropdownOpen(false);
   };
 
-  const solutions = [
-    { name: "Satellite Services", desc: "Real-time tracking & optimization", href: "/services/satellite-services" },
-    { name: "L-Band Satellite Services", desc: "Streamline operations end-to-end", href: "/services/l-band" },
-    { name: "GIS", desc: "Connected ecosystem solutions", href: "/services/gis" },
-    { name: "ICT Services", desc: "Seamless ERP & CRM sync", href: "/services/ict-services" },
-    { name: "Integration Services", desc: "Seamless ERP & CRM sync", href: "/services/integration-services" },
-     { name: "Radio Communication Solutions", desc: "Seamless ERP & CRM sync", href: "/services/radio-communication-solutions" }
-  ];
+  // Desktop dropdown hover handlers with smooth delay
+  const handleDesktopDropdownEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsDesktopDropdownOpen(true);
+  };
+
+  const handleDesktopDropdownLeave = () => {
+    // Add small delay before closing to prevent flicker
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsDesktopDropdownOpen(false);
+    }, 150);
+  };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+ const solutions = [
+  {
+    name: "Satellite Services",
+    desc: "Real-time satellite connectivity for tracking, monitoring, and global communication",
+    href: "/services/satellite-services"
+  },
+  {
+    name: "Electrical Solutions",
+    desc: "Comprehensive electrical systems for reliable power, safety, and efficiency",
+    href: "/services/electorinc-solutions"
+  },
+  {
+    name: "GIS",
+    desc: "Geospatial mapping and spatial analysis for data-driven decision making",
+    href: "/services/gis"
+  },
+  {
+    name: "ICT Services",
+    desc: "Robust ICT infrastructure to support secure and scalable digital operations",
+    href: "/services/ict-services"
+  },
+  {
+    name: "Integration Services",
+    desc: "System integration solutions connecting applications, data, and workflows",
+    href: "/services/integration-services"
+  },
+  {
+    name: "Radio Communication Solutions",
+    desc: "Secure radio communication systems for uninterrupted field connectivity",
+    href: "/services/radio"
+  }
+];
+
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -54,33 +109,36 @@ const OFBSNavbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
+            {/* LOGO */}
+            <Link href="/" className="flex-shrink-0 group cursor-pointer">
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative w-30 h-30 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition duration-500 overflow-hidden">
+                    <Image 
+                      src="/logo.png" 
+                      alt="OFBS Logo" 
+                      width={220}
+                      height={90}
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
 
-
-<Link href="/" className="flex-shrink-0 group cursor-pointer">
-  <div className="flex items-center space-x-3">
-    <div className="relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
-      <div className="relative w-30 h-30 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition duration-500 overflow-hidden">
-        <Image 
-          src="/logo.png" 
-          alt="OFBS Logo" 
-          width={220}
-          height={90}
-          className="object-contain"
-          priority
-        />
-      </div>
-    </div>
-  </div>
-</Link>
-
+            {/* DESKTOP NAV */}
             <div className="hidden lg:flex items-center space-x-1">
               {navLinks.map((link, idx) => (
                 <div key={idx} className="relative group">
                   {link.dropdown ? (
+                    // WRAPPED CONTAINER - Trigger + Dropdown share hover area
                     <div
-                      onMouseEnter={() => setIsDesktopDropdownOpen(true)}
-                      onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+                      ref={dropdownRef}
+                      onMouseEnter={handleDesktopDropdownEnter}
+                      onMouseLeave={handleDesktopDropdownLeave}
+                      className="relative"
                     >
                       <Link
                         href={link.href}
@@ -92,7 +150,7 @@ const OFBSNavbar = () => {
                         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] group-hover:w-full transition-all duration-500"></span>
                       </Link>
 
-                      {/* DROPDOWN */}
+                      {/* DROPDOWN MENU */}
                       {isDesktopDropdownOpen && (
                         <div
                           className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-2xl shadow-2xl shadow-blue-700/10 border border-blue-100 overflow-hidden"
@@ -127,6 +185,7 @@ const OFBSNavbar = () => {
                       )}
                     </div>
                   ) : (
+                    // REGULAR NAV LINKS
                     <Link
                       href={link.href}
                       className="relative px-4 py-2 text-sm font-semibold text-slate-700 hover:text-[#2563EB] transition duration-300 group"
@@ -176,11 +235,13 @@ const OFBSNavbar = () => {
             animation: "fadeIn 0.3s ease-out",
           }}
         >
+          {/* BACKDROP */}
           <div
             className="absolute inset-0 bg-black/20 backdrop-blur-sm"
             onClick={closeMobileMenu}
           ></div>
 
+          {/* MENU CONTENT */}
           <div
             className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl max-h-[80vh] overflow-y-auto"
             style={{
@@ -192,6 +253,7 @@ const OFBSNavbar = () => {
                 <div key={idx}>
                   {link.dropdown ? (
                     <div className="space-y-2">
+                      {/* SERVICES TOGGLE BUTTON */}
                       <button
                         onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
                         className="w-full text-left px-4 py-3 text-base font-semibold text-slate-800 hover:bg-blue-50 rounded-xl transition flex items-center justify-between"
@@ -204,6 +266,7 @@ const OFBSNavbar = () => {
                         />
                       </button>
 
+                      {/* MOBILE DROPDOWN ITEMS */}
                       {isMobileDropdownOpen && (
                         <div className="pl-4 space-y-1">
                           {solutions.map((sol, i) => (
@@ -220,6 +283,7 @@ const OFBSNavbar = () => {
                       )}
                     </div>
                   ) : (
+                    // REGULAR MOBILE NAV LINKS
                     <Link
                       href={link.href}
                       onClick={closeMobileMenu}
@@ -231,6 +295,7 @@ const OFBSNavbar = () => {
                 </div>
               ))}
 
+              {/* MOBILE CTA BUTTONS */}
               <div className="pt-4 space-y-3 border-t border-slate-200">
                 <button className="w-full px-4 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 rounded-xl transition">
                   Login

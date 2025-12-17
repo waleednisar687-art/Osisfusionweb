@@ -194,9 +194,7 @@ export default function ServicesHero() {
           variants={itemVariants}
           className="text-lg sm:text-xl lg:text-2xl text-[#475569] mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          Empower your business with cutting-edge solutions designed for the
-          modern enterprise. Scale faster, innovate smarter, and deliver
-          exceptional results.
+          Empower your operations with reliable satellite, electrical, GIS, ICT, and communication solutions built for mission-critical performance and seamless connectivity.
         </motion.p>
 
         {/* CTA Buttons */}
