@@ -57,7 +57,7 @@ const HeroSection = () => {
           style={{ filter: 'brightness(0.65)' }}
         >
           <source
-            src="https://ofbs-oft.com//wp-content/uploads/2024/07/a.mp4"
+            src="https://comssol.com/wp-content/uploads/2021/01/Satellite-37713.mp4"
             type="video/mp4"
           />
         </video>
