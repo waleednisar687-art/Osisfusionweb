@@ -142,40 +142,15 @@ export default function AboutSection() {
             <span className="text-sm font-semibold text-blue-600 tracking-wide">About OFBS</span>
           </motion.div>
 
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-            <span className="block">Transforming Businesses</span>
-            <span className="block mt-2 bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] bg-clip-text text-transparent">
-              Through Innovation
-            </span>
-          </motion.h2>
+     
 
-          <motion.p variants={fadeUp} className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-slate-600">
-           Oasis Fusion Business Services is a premier provider of ICT, Satellite Communications, and Systems Integration solutions in Saudi Arabia. We revolutionize Enterprise, Defense, and  Government clientele with unique telecommunication and Information Technology services and solutions.
-          </motion.p>
+       
 
           <motion.div variants={fadeUp} className="mt-6 mx-auto w-24 h-1 rounded-full" style={{ background: "linear-gradient(90deg, #2563EB, #06B6D4)" }} />
         </motion.div>
 
         {/* Stats */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-14"
-        >
-          {stats.map((s, i) => (
-            <motion.div key={i} variants={cardVariants} whileHover={{ scale: 1.04, y: -6 }} className="relative group bg-white border border-slate-200 rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300">
-              <s.Icon className="mx-auto w-8 h-8 text-[#06B6D4] mb-3" />
-              <div className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] bg-clip-text text-transparent">
-                {s.number}
-              </div>
-              <p className="mt-1 text-sm text-slate-600">{s.label}</p>
-
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[#2563EB]/6 to-[#06B6D4]/6 -z-10" />
-            </motion.div>
-          ))}
-        </motion.div>
+    
 
         {/* Main grid: Image + content */}
         <div className="grid lg:grid-cols-2 gap-12 mb-20 items-start">
@@ -223,8 +198,9 @@ export default function AboutSection() {
                 <div>
                   <h3 className="text-2xl lg:text-3xl font-bold text-slate-900">Who We Are</h3>
                   <p className="mt-1 text-slate-600 max-w-xl">
-                    OFBS is a trusted digital transformation provider empowering enterprises with automation, cloud, and AI solutions that drive growth and operational excellence.
-                  </p>
+Oasis Fusion Business Services is a provider of ICT and systems integration services in Saudi Arabia. You rely on us to design, integrate, and deploy secure technology environments for Enterprise, Defense, and Government operations. Our teams bring strong regional experience in network integration, IT infrastructure, and mission critical systems. We focus on connecting complex and remote operations through reliable architectures, seamless interoperability, and tailored solutions that meet your operational requirements.
+
+Mission: To provide unparalleled connectivity solutions that empower businesses with reliable, cost-effective, and high-quality services, ensuring exceptional value and satisfaction.                  </p>
                 </div>
               </div>
 

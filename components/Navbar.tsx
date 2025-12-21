@@ -89,8 +89,8 @@ const OFBSNavbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
+     { name: "About", href: "/about" },
     { name: "Services", href: "/services", dropdown: true },
-    { name: "About", href: "/about" },
     { name: "Coverage", href: "/coverage" },
     { name: "Contact", href: "/contact" },
   ];
@@ -201,10 +201,6 @@ const OFBSNavbar = () => {
 
             {/* CTA BUTTONS */}
             <div className="hidden lg:flex items-center space-x-4">
-              <button className="px-6 py-2 text-sm font-semibold text-slate-700 hover:text-[#2563EB] transition">
-                Login
-              </button>
-
               <button className="relative px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] rounded-full shadow-lg shadow-blue-600/40 hover:shadow-xl hover:shadow-blue-700/50 transition-all duration-500 group overflow-hidden">
                 <span className="relative z-10">Get Started</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] opacity-0 group-hover:opacity-100 transition duration-500 rounded-full"></div>
