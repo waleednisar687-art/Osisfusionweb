@@ -13,9 +13,9 @@ export default function Home() {
  <>
  <HeroSection />
  <OFBSWebsite />
+ <OurServices/>
  <About/>
  <MarketsWeCover />
- <OurServices/>
  <SatelliteCoverageSection/>
  <PartnersCarousel />
  <ContactSection/>

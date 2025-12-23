@@ -112,45 +112,27 @@ const PartnersCarousel = () => {
             </h2>
           </motion.div>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl text-blue-700 max-w-4xl mx-auto leading-relaxed"
-          >
-            Collaborating with world-class organizations to deliver secure and innovative communication solutions.
-          </motion.p>
-
+        
           <motion.div
             variants={itemVariants}
             className="mt-8 w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-blue-600 to-transparent rounded-full"
           />
         </motion.div>
 
-        {/* STATS */}
-        <motion.div
+          <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="mt-12 text-center"
         >
-          {[
-            { number: '150+', label: 'Countries Served' },
-            { number: '16+', label: 'Global Partners' },
-            { number: '99.9%', label: 'Uptime SLA' },
-            { number: '24/7', label: 'Support Available' }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-2xl border-2 border-blue-200 p-6 text-center shadow-lg shadow-blue-500/10 hover:shadow-xl hover:shadow-blue-500/30 hover:border-blue-400 transition-all duration-300"
-            >
-              <Award className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-              <p className="text-3xl font-bold text-blue-900">{stat.number}</p>
-              <p className="text-sm text-blue-700">{stat.label}</p>
-            </motion.div>
-          ))}
+          <div className="inline-flex items-center space-x-3 px-6 py-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-2xl shadow-lg">
+            <Award className="w-6 h-6 text-cyan-600" />
+            <p className="text-blue-800 font-semibold">
+              Certified partnerships with leading technology providers worldwide
+            </p>
+          </div>
         </motion.div>
+       
 
         {/* PARTNERS CAROUSEL */}
         <motion.div
@@ -171,7 +153,7 @@ const PartnersCarousel = () => {
             >
               {duplicatedPartners.map((partner, index) => (
                 <motion.div key={`${partner.id}-${index}`} whileHover={{ scale: 1.1, y: -5 }} className="flex-shrink-0 group">
-                  <div className="relative w-48 h-32 bg-white rounded-2xl border-2 border-blue-100 shadow-lg p-6 flex items-center justify-center overflow-hidden group-hover:border-blue-300 group-hover:shadow-2xl group-hover:shadow-blue-500/40 transition-all duration-500">
+                  <div className="relative w-62 h-42 bg-white rounded-2xl border-2 border-blue-100 shadow-lg p-6 flex items-center justify-center overflow-hidden group-hover:border-blue-300 group-hover:shadow-2xl group-hover:shadow-blue-500/40 transition-all duration-500">
                     <img src={partner.url} alt={partner.name} className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500" />
 
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
@@ -185,23 +167,9 @@ const PartnersCarousel = () => {
             </motion.div>
           </div>
 
-          <p className="text-sm text-blue-700 text-center mt-8 italic">Hover over logos to see enhanced effects</p>
         </motion.div>
 
-        {/* TRUST BADGE */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-12 text-center"
-        >
-          <div className="inline-flex items-center space-x-3 px-6 py-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-2xl shadow-lg">
-            <Award className="w-6 h-6 text-cyan-600" />
-            <p className="text-blue-800 font-semibold">
-              Certified partnerships with leading technology providers worldwide
-            </p>
-          </div>
-        </motion.div>
+      
       </div>
 
       {/* Bottom Accent Line */}
