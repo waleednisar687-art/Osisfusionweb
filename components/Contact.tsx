@@ -189,7 +189,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-blue-900">Email</p>
-                    <p className="text-sm text-slate-600">info@ofbs-oft.com</p>
+                    <p className="text-sm text-slate-600">info@oaisfusionservices.com</p>
                   </div>
                 </motion.div>
 
